@@ -1,0 +1,3 @@
+Igor     100
+Vova     96
+Dima     72
