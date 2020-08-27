@@ -17,14 +17,25 @@ e_game menu(SDL_Window *window, LoadMenu *load, GameState *game) {
 
     TTF_Font *fnt = TTF_OpenFont("resource/images/6006.ttf", 32);
 
-    char *ptr_user_4 = "-----       -";
-    char *ptr_user_5 = "-----       -";
-    char *ptr_user_6 = "-----       -";
-    char *ptr_user_7 = "-----       -";
-    char *ptr_user_8 = "-----       -";
-    char *ptr_user_9 = "-----       -";
-    char *ptr_user_10 = "-----       -";
-    char *ptr_user_11 = "-----       -";
+    char *ptr_user_4 = "JustXAH";
+    char *ptr_user_5 = "CleverV";
+    char *ptr_user_6 = "Pe4enyka";
+    char *ptr_user_7 = "ogur4ik";
+    char *ptr_user_8 = "helloworld";
+    char *ptr_user_9 = "FlyGames";
+    char *ptr_user_10 = "vovazilvova";
+    char *ptr_user_11 = "YuraLOL";
+    char *ptr_user_12 = "133";
+    char *ptr_user_13 = "118";
+    char *ptr_user_14 = "98";
+    char *ptr_user_15 = "92";
+    char *ptr_user_16 = "86";
+    char *ptr_user_17 = "74";
+    char *ptr_user_18 = "58";
+    char *ptr_user_19 = "47";
+
+
+    
 //    game->game->game->renderer
     SDL_Rect rect;
     SDL_Rect rect2;
@@ -108,7 +119,7 @@ e_game menu(SDL_Window *window, LoadMenu *load, GameState *game) {
 
     SDL_FreeSurface(load->button_quit);
 
-    rect3.x = 445; //Extreme left of the window
+    rect3.x = 441; //Extreme left of the window
     rect3.y = 340; //Very bottom of the window
     rect3.w = 373; //100 pixels width
     rect3.h = 118; //100 pixels height  
@@ -124,7 +135,7 @@ e_game menu(SDL_Window *window, LoadMenu *load, GameState *game) {
 
     rect6.x = 527; //Extreme left of the window
     rect6.y = 290; //Very bottom of the window
-    rect6.w = 210; //100 pixels width
+    rect6.w = 215; //100 pixels width
     rect6.h = 55; //100 pixels height 
 
     SDL_FreeSurface(load->button_legends2);
@@ -143,15 +154,15 @@ e_game menu(SDL_Window *window, LoadMenu *load, GameState *game) {
 
     SDL_FreeSurface(load->score);
 
-    rect9.x = 600; //Extreme left of the window
-    rect9.y = 100; //Very bottom of the window
+    rect9.x = 680; //Extreme left of the window
+    rect9.y = 120; //Very bottom of the window
     rect9.w = 175; //100 pixels width
     rect9.h = 40; //100 pixels height
 
     SDL_FreeSurface(load->user);
 
-    rect10.x = 450; //Extreme left of the window
-    rect10.y = 100; //Very bottom of the window
+    rect10.x = 470; //Extreme left of the window
+    rect10.y = 120; //Very bottom of the window
     rect10.w = 175; //100 pixels width
     rect10.h = 40; //100 pixels height
 
@@ -204,6 +215,14 @@ e_game menu(SDL_Window *window, LoadMenu *load, GameState *game) {
                 destroy_menu(game, load);
                 return GAME_STATE;
             }
+            if (input.button.button == SDL_BUTTON_LEFT
+                && input.button.x >= 560 && input.button.x <= 695
+                && input.button.y >= 230 && input.button.y <= 260) {
+                Mix_PlayChannel(2, game->clicks, 0);
+                // Mix_FreeMusic(game->backsound);
+                destroy_menu(game, load);
+                return GAME_STATE;
+            }
         }
 
         //legend button
@@ -232,13 +251,15 @@ e_game menu(SDL_Window *window, LoadMenu *load, GameState *game) {
         if (input.type == SDL_KEYDOWN) {
             switch (input.key.keysym.sym) {
                 case SDLK_ESCAPE:
+                    destroy_menu(game, load);
                     quit = true;
                     Mix_FreeMusic(game->backsound);
                     Mix_FreeChunk(game->clicks);
+                    return EXIT_STATE;
+                    break;
+                default:
                     break;
             }
-            destroy_menu(game, load);
-            return EXIT_STATE;
         }
 
 
@@ -263,6 +284,14 @@ e_game menu(SDL_Window *window, LoadMenu *load, GameState *game) {
                     draw_text(color, 500, 380, ptr_user_9, game->renderer, fnt);
                     draw_text(color, 500, 410, ptr_user_10, game->renderer, fnt);
                     draw_text(color, 500, 440, ptr_user_11, game->renderer, fnt);
+                    draw_text(color, 750, 230, ptr_user_12, game->renderer, fnt);
+                    draw_text(color, 750, 260, ptr_user_13, game->renderer, fnt);
+                    draw_text(color, 750, 290, ptr_user_14, game->renderer, fnt);
+                    draw_text(color, 750, 320, ptr_user_15, game->renderer, fnt);
+                    draw_text(color, 750, 350, ptr_user_16, game->renderer, fnt);
+                    draw_text(color, 750, 380, ptr_user_17, game->renderer, fnt);
+                    draw_text(color, 750, 410, ptr_user_18, game->renderer, fnt);
+                    draw_text(color, 750, 440, ptr_user_19, game->renderer, fnt);
                     SDL_RenderCopy(game->renderer, load->texture_menu, NULL, &rect11);
                 }
                 SDL_RenderCopy(game->renderer, load->texture_team_name, NULL, &rect8);
@@ -289,6 +318,14 @@ e_game menu(SDL_Window *window, LoadMenu *load, GameState *game) {
                     draw_text(color, 500, 380, ptr_user_9, game->renderer, fnt);
                     draw_text(color, 500, 410, ptr_user_10, game->renderer, fnt);
                     draw_text(color, 500, 440, ptr_user_11, game->renderer, fnt);
+                    draw_text(color, 750, 230, ptr_user_12, game->renderer, fnt);
+                    draw_text(color, 750, 260, ptr_user_13, game->renderer, fnt);
+                    draw_text(color, 750, 290, ptr_user_14, game->renderer, fnt);
+                    draw_text(color, 750, 320, ptr_user_15, game->renderer, fnt);
+                    draw_text(color, 750, 350, ptr_user_16, game->renderer, fnt);
+                    draw_text(color, 750, 380, ptr_user_17, game->renderer, fnt);
+                    draw_text(color, 750, 410, ptr_user_18, game->renderer, fnt);
+                    draw_text(color, 750, 440, ptr_user_19, game->renderer, fnt);
                     SDL_RenderCopy(game->renderer, load->texture_menu, NULL, &rect11);
                 }
                 SDL_RenderCopy(game->renderer, load->texture_team_name, NULL, &rect8);
@@ -309,6 +346,14 @@ e_game menu(SDL_Window *window, LoadMenu *load, GameState *game) {
                     draw_text(color, 500, 380, ptr_user_9, game->renderer, fnt);
                     draw_text(color, 500, 410, ptr_user_10, game->renderer, fnt);
                     draw_text(color, 500, 440, ptr_user_11, game->renderer, fnt);
+                    draw_text(color, 750, 230, ptr_user_12, game->renderer, fnt);
+                    draw_text(color, 750, 260, ptr_user_13, game->renderer, fnt);
+                    draw_text(color, 750, 290, ptr_user_14, game->renderer, fnt);
+                    draw_text(color, 750, 320, ptr_user_15, game->renderer, fnt);
+                    draw_text(color, 750, 350, ptr_user_16, game->renderer, fnt);
+                    draw_text(color, 750, 380, ptr_user_17, game->renderer, fnt);
+                    draw_text(color, 750, 410, ptr_user_18, game->renderer, fnt);
+                    draw_text(color, 750, 440, ptr_user_19, game->renderer, fnt);
                     SDL_RenderCopy(game->renderer, load->texture_menu, NULL, &rect11);
                 }
                 SDL_RenderCopy(game->renderer, load->texture_team_name, NULL, &rect8);
@@ -334,6 +379,14 @@ e_game menu(SDL_Window *window, LoadMenu *load, GameState *game) {
                     draw_text(color, 500, 380, ptr_user_9, game->renderer, fnt);
                     draw_text(color, 500, 410, ptr_user_10, game->renderer, fnt);
                     draw_text(color, 500, 440, ptr_user_11, game->renderer, fnt);
+                    draw_text(color, 750, 230, ptr_user_12, game->renderer, fnt);
+                    draw_text(color, 750, 260, ptr_user_13, game->renderer, fnt);
+                    draw_text(color, 750, 290, ptr_user_14, game->renderer, fnt);
+                    draw_text(color, 750, 320, ptr_user_15, game->renderer, fnt);
+                    draw_text(color, 750, 350, ptr_user_16, game->renderer, fnt);
+                    draw_text(color, 750, 380, ptr_user_17, game->renderer, fnt);
+                    draw_text(color, 750, 410, ptr_user_18, game->renderer, fnt);
+                    draw_text(color, 750, 440, ptr_user_19, game->renderer, fnt);
                     SDL_RenderCopy(game->renderer, load->texture_menu, NULL, &rect11);
                 }
                 SDL_RenderCopy(game->renderer, load->texture_team_name, NULL, &rect8);
@@ -354,11 +407,19 @@ e_game menu(SDL_Window *window, LoadMenu *load, GameState *game) {
                     draw_text(color, 500, 380, ptr_user_9, game->renderer, fnt);
                     draw_text(color, 500, 410, ptr_user_10, game->renderer, fnt);
                     draw_text(color, 500, 440, ptr_user_11, game->renderer, fnt);
+                    draw_text(color, 750, 230, ptr_user_12, game->renderer, fnt);
+                    draw_text(color, 750, 260, ptr_user_13, game->renderer, fnt);
+                    draw_text(color, 750, 290, ptr_user_14, game->renderer, fnt);
+                    draw_text(color, 750, 320, ptr_user_15, game->renderer, fnt);
+                    draw_text(color, 750, 350, ptr_user_16, game->renderer, fnt);
+                    draw_text(color, 750, 380, ptr_user_17, game->renderer, fnt);
+                    draw_text(color, 750, 410, ptr_user_18, game->renderer, fnt);
+                    draw_text(color, 750, 440, ptr_user_19, game->renderer, fnt);
                     SDL_RenderCopy(game->renderer, load->texture_menu, NULL, &rect11);
                 }
                 SDL_RenderCopy(game->renderer, load->texture_team_name, NULL, &rect8);
                 SDL_RenderPresent(game->renderer);
-            } else if ((x >= 525 && x <= 700) && (y >= 290 && y <= 340)) {
+            } else if ((x >= 525 && x <= 750) && (y >= 290 && y <= 340)) {
                 if (game->flag2 == 0) {
                     SDL_RenderCopy(game->renderer, load->texture_start, NULL, &rect2);
                     SDL_RenderCopy(game->renderer, load->texture_quit, NULL, &rect3);
@@ -374,6 +435,14 @@ e_game menu(SDL_Window *window, LoadMenu *load, GameState *game) {
                     draw_text(color, 500, 380, ptr_user_9, game->renderer, fnt);
                     draw_text(color, 500, 410, ptr_user_10, game->renderer, fnt);
                     draw_text(color, 500, 440, ptr_user_11, game->renderer, fnt);
+                    draw_text(color, 750, 230, ptr_user_12, game->renderer, fnt);
+                    draw_text(color, 750, 260, ptr_user_13, game->renderer, fnt);
+                    draw_text(color, 750, 290, ptr_user_14, game->renderer, fnt);
+                    draw_text(color, 750, 320, ptr_user_15, game->renderer, fnt);
+                    draw_text(color, 750, 350, ptr_user_16, game->renderer, fnt);
+                    draw_text(color, 750, 380, ptr_user_17, game->renderer, fnt);
+                    draw_text(color, 750, 410, ptr_user_18, game->renderer, fnt);
+                    draw_text(color, 750, 440, ptr_user_19, game->renderer, fnt);
                     SDL_RenderCopy(game->renderer, load->texture_menu, NULL, &rect11);
                 }
                 SDL_RenderCopy(game->renderer, load->texture_team_name, NULL, &rect8);
@@ -394,6 +463,14 @@ e_game menu(SDL_Window *window, LoadMenu *load, GameState *game) {
                     draw_text(color, 500, 380, ptr_user_9, game->renderer, fnt);
                     draw_text(color, 500, 410, ptr_user_10, game->renderer, fnt);
                     draw_text(color, 500, 440, ptr_user_11, game->renderer, fnt);
+                    draw_text(color, 750, 230, ptr_user_12, game->renderer, fnt);
+                    draw_text(color, 750, 260, ptr_user_13, game->renderer, fnt);
+                    draw_text(color, 750, 290, ptr_user_14, game->renderer, fnt);
+                    draw_text(color, 750, 320, ptr_user_15, game->renderer, fnt);
+                    draw_text(color, 750, 350, ptr_user_16, game->renderer, fnt);
+                    draw_text(color, 750, 380, ptr_user_17, game->renderer, fnt);
+                    draw_text(color, 750, 410, ptr_user_18, game->renderer, fnt);
+                    draw_text(color, 750, 440, ptr_user_19, game->renderer, fnt);
                     SDL_RenderCopy(game->renderer, load->texture_menu, NULL, &rect11);
                 }
                 SDL_RenderCopy(game->renderer, load->texture_team_name, NULL, &rect8);
@@ -418,6 +495,14 @@ e_game menu(SDL_Window *window, LoadMenu *load, GameState *game) {
                     draw_text(color, 500, 380, ptr_user_9, game->renderer, fnt);
                     draw_text(color, 500, 410, ptr_user_10, game->renderer, fnt);
                     draw_text(color, 500, 440, ptr_user_11, game->renderer, fnt);
+                    draw_text(color, 750, 230, ptr_user_12, game->renderer, fnt);
+                    draw_text(color, 750, 260, ptr_user_13, game->renderer, fnt);
+                    draw_text(color, 750, 290, ptr_user_14, game->renderer, fnt);
+                    draw_text(color, 750, 320, ptr_user_15, game->renderer, fnt);
+                    draw_text(color, 750, 350, ptr_user_16, game->renderer, fnt);
+                    draw_text(color, 750, 380, ptr_user_17, game->renderer, fnt);
+                    draw_text(color, 750, 410, ptr_user_18, game->renderer, fnt);
+                    draw_text(color, 750, 440, ptr_user_19, game->renderer, fnt);
                     SDL_RenderCopy(game->renderer, load->texture_menu, NULL, &rect11);
                 }
                 SDL_RenderCopy(game->renderer, load->texture_team_name, NULL, &rect8);
@@ -442,7 +527,7 @@ e_game menu(SDL_Window *window, LoadMenu *load, GameState *game) {
                 }
                 SDL_RenderCopy(game->renderer, load->texture_team_name, NULL, &rect8);
                 SDL_RenderPresent(game->renderer);
-            } else if ((x >= 525 && x <= 700) && (y >= 290 && y <= 340)) {
+            } else if ((x >= 525 && x <= 750) && (y >= 290 && y <= 340)) {
                 if (game->flag2 == 0) {
                     SDL_RenderCopy(game->renderer, load->texture_start, NULL, &rect2);
                     SDL_RenderCopy(game->renderer, load->texture_quit, NULL, &rect3);
@@ -458,6 +543,14 @@ e_game menu(SDL_Window *window, LoadMenu *load, GameState *game) {
                     draw_text(color, 500, 380, ptr_user_9, game->renderer, fnt);
                     draw_text(color, 500, 410, ptr_user_10, game->renderer, fnt);
                     draw_text(color, 500, 440, ptr_user_11, game->renderer, fnt);
+                    draw_text(color, 750, 230, ptr_user_12, game->renderer, fnt);
+                    draw_text(color, 750, 260, ptr_user_13, game->renderer, fnt);
+                    draw_text(color, 750, 290, ptr_user_14, game->renderer, fnt);
+                    draw_text(color, 750, 320, ptr_user_15, game->renderer, fnt);
+                    draw_text(color, 750, 350, ptr_user_16, game->renderer, fnt);
+                    draw_text(color, 750, 380, ptr_user_17, game->renderer, fnt);
+                    draw_text(color, 750, 410, ptr_user_18, game->renderer, fnt);
+                    draw_text(color, 750, 440, ptr_user_19, game->renderer, fnt);
                     SDL_RenderCopy(game->renderer, load->texture_menu, NULL, &rect11);
                 }
                 SDL_RenderCopy(game->renderer, load->texture_team_name, NULL, &rect8);
@@ -478,12 +571,23 @@ e_game menu(SDL_Window *window, LoadMenu *load, GameState *game) {
                     draw_text(color, 500, 380, ptr_user_9, game->renderer, fnt);
                     draw_text(color, 500, 410, ptr_user_10, game->renderer, fnt);
                     draw_text(color, 500, 440, ptr_user_11, game->renderer, fnt);
+                    draw_text(color, 750, 230, ptr_user_12, game->renderer, fnt);
+                    draw_text(color, 750, 260, ptr_user_13, game->renderer, fnt);
+                    draw_text(color, 750, 290, ptr_user_14, game->renderer, fnt);
+                    draw_text(color, 750, 320, ptr_user_15, game->renderer, fnt);
+                    draw_text(color, 750, 350, ptr_user_16, game->renderer, fnt);
+                    draw_text(color, 750, 380, ptr_user_17, game->renderer, fnt);
+                    draw_text(color, 750, 410, ptr_user_18, game->renderer, fnt);
+                    draw_text(color, 750, 440, ptr_user_19, game->renderer, fnt);
                     SDL_RenderCopy(game->renderer, load->texture_menu, NULL, &rect11);
                 }
                 SDL_RenderCopy(game->renderer, load->texture_team_name, NULL, &rect8);
                 SDL_RenderPresent(game->renderer);
             }
         }
+        i++;
+        if (i == 55)
+            i = 0;
     }
 
     // Deleting the texture
